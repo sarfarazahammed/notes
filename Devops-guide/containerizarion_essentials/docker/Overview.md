@@ -82,7 +82,6 @@ graph TD
   Host_Kernel----|Shared Kernel|Host_OS
 
   note1[Each container runs fully isolated from the others, sharing the host OS kernel but maintaining separate filesystems, dependencies, and applications.]
-
 ```
 
 ## Virtualization
@@ -108,7 +107,6 @@ Virtualization is the creation of a virtual version of something, such as comput
 - **Legacy Application Support:** Running older applications on modern hardware.
 
 ### Depicting Virtualization on machine
-```mermaid
 ```mermaid
 graph TD
 
