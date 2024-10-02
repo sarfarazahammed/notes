@@ -165,3 +165,108 @@ graph TD
   - Running multiple applications with different OS requirements.
   - Isolating applications completely for security reasons.
   - Supporting legacy systems that require older environments.
+
+## Building Containers
+Docker builds containers using 10 major system features.They are as follows
+
+PID namespace — Process identifiers and capabilities
+UTS namespace — Host and domain name
+MNT namespace — Filesystem access and structure
+IPC namespace — Process communication over shared memory
+NET namespace — Network access and structure
+USR namespace — User names and identifiers
+chroot syscall —Controls the location of the filesystem root
+cgroups — Resource protection
+CAP drop — Operating system feature restrictions
+Security modules — Mandatory access controls
+
+
+## Shipping Containers
+- Think of a Docker container as a physical container. It's like a box where an application and its dependencies are stored and run as an application.
+- Just as physical containers are shipped by cranes, trains, ships, and trucks, Docker runs, copies, and distributes application containers.
+- The application containers that are shipped by Docker are called as **Image**
+- **Images** are the shippable units in the Docker ecosystem.
+- Infrastructure components that simplify shipping/distributing containers are registries and indexes
+
+### Registries
+- A Docker registry is a storage and distribution system for Docker images. It allows developers to push (upload) images after building, and pull (download) images to use them in their environments.
+#### Public Docker Registries
+
+##### Docker Hub
+- The most widely used public Docker registry.
+- Provides free access to public images and limited private repositories.
+- Users can host their own public or private images.
+
+##### Other Public Registries
+- **Google Container Registry (GCR)**
+- **Amazon Elastic Container Registry (ECR)**
+- **Azure Container Registry (ACR)**
+
+#### Private Docker Registries
+- Used for storing proprietary or sensitive images.
+- Can be hosted on-premises or in the cloud.
+- Popular options include:
+  - **Harbor:** An open-source trusted cloud-native registry.
+  - **JFrog Artifactory:** Universal repository manager with Docker support.
+
+### Docker Indexes?
+- An index is a service that keeps track of the images in a registry.
+- Provides a searchable interface to find and manage Docker images.
+- Docker Hub itself includes an index of all available images.
+- Functions of Docker Index
+  - Organization: Categorizes and lists available images.
+  - Search: Allows users to search for specific images based on names, tags, or other metadata.
+
+
+## What problems does Docker solve ?
+
+### 1. Environment Inconsistency
+
+#### Problem
+- **Development vs. Production:** Applications often behave differently in production than in a developer's local environment due to differences in OS, libraries, and configurations.
+- **"It works on my machine" Syndrome:** The common scenario where software works perfectly on a developer's machine but fails in other environments.
+
+#### Solution with Docker
+- **Consistency:** Docker ensures that applications run the same irrespective of where they are deployed—whether on a developer's laptop, a test server, or a production environment.
+- **Isolation:** Containers encapsulate all dependencies, libraries, configuration files, execution environment, and the application code itself. 
+
+### 2. Dependency Management
+
+#### Problem
+- **Complex Dependencies:** Modern applications often require specific versions of libraries and tools. Managing these dependencies across multiple environments is challenging.
+- **Dependency Conflicts:** When multiple applications require different versions of the same dependency, conflicts can arise.
+
+#### Solution with Docker
+- **Encapsulation:** Each Docker container includes its own set of dependencies, libraries, and binaries, ensuring no conflict between the applications.
+- **Isolation:** Containers run in separate environments, preventing clashes between different dependencies.
+
+### 3. Resource Efficiency
+
+#### Problem
+- **Overhead of Virtual Machines:** Running multiple virtual machines can be resource-intensive as each VM includes a full operating system instance, leading to significant overhead.
+- **Inefficiency in Managing Resources:** Traditional VMs are less efficient in resource allocation and utilization.
+
+#### Solution with Docker
+- **Lightweight Containers:** Docker containers share the host OS kernel, making them much lighter and faster to start compared to VMs.
+- **Efficient Resource Utilization:** Containers can be packed efficiently on a single machine, maximizing resource utilization without the overhead of VMs.
+
+### 4. Deployment and Scaling
+
+#### Problem
+- **Complex Deployment Scripts:** Deploying applications often involves complex, error-prone scripts.
+- **Scalability Challenges:** Scaling applications manually or with traditional methods lacks efficiency and can be prone to errors.
+
+#### Solution with Docker
+- **Simplified Deployment:** Docker uses containers to encapsulate applications and dependencies, making deployment as simple as running a container.
+- **Scalability:** Orchestration tools like Docker Swarm and Kubernetes can automatically manage container scaling, health, and distribution across clusters.
+
+### 5. Isolation and Security
+
+#### Problem
+- **Shared Environment Risks:** Running multiple applications on the same host can lead to security risks and resource contention.
+- **Lack of Isolation:** Without proper isolation, a compromised application can potentially affect others running on the same host.
+
+#### Solution with Docker
+- **Process Isolation:** Docker uses namespaces and control groups (cgroups) to ensure strong isolation between containers.
+- **Security:** Containers isolate applications from each other and the host system, reducing the attack surface and potential for interference.
+
