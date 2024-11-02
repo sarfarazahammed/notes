@@ -57,6 +57,10 @@
 | `docker diff`            |                                               | `docker diff my_container`                                  | Shows changes to files in a container.                                     |
 | `docker container prune` |                                               | `docker container prune`                                    | Removes all stopped containers and reclaims space.                        |
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 23910d555154781161134f06ca53b7fc0b8be0a2
 ---
 **Q: How to create a container in docker?**
 
