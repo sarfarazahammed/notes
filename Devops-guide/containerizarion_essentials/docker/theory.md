@@ -6,6 +6,58 @@
 - simplifies and standardizes software packaging, distribution, and execution through efficient process containers and user-friendly tooling.
 - It accomplishes using an OS technology called Containers
 
+## Docker architecture
+Docker is written in _Go_ language.
+Docker uses technology named as _namespaces_.
+Docker uses _client-server_ architecture.
+
+Docker has below components:
+  1. __Docker daemon__(`dockerd`):
+      - listens for API requests and manages Docker objects such as containers, images, networks, ...
+      - It does the heavy lifting of building, running, and distributing your applications
+      - This has containerd runtime which runs the applications as containers
+  2. __Docker client__(`docker`):
+      - A way to interact with `dockerd`. Using commands provided by client, you interact with `dockerd`.
+      - A docker client can communicate with more than one daemon. It uses Docker API to carry out communication.
+  3. __Docker Desktop__:
+      - A GUI application that enables to build, run & share applications.
+      - It contains `dockerd`, `docker`, `docker-compose`, `kubernetes` and credential-helper.
+  4. __Docker Registeries__:
+      - It stores Docker images. _Docker hub_ is a public registry.
+  5. __Docker Objects__:
+      - Everything that can be managed by docker is an Docker object.
+      - Eg: images, containers, volumes, networks, plugins, ...
+  ```mermaid
+    graph TB
+      subgraph Docker Host
+        dockerd[Docker Daemon]
+        containerd[containerd]
+        runc[runc]
+        subgraph Docker Images
+          image1[Image 1]
+          image2[Image 2]
+          image3[Image 3]
+        end
+        subgraph Docker Containers
+          container1[Container 1]
+          container2[Container 2]
+          container3[Container 3]
+        end
+      end
+      subgraph Docker Client
+        cli[Docker CLI]
+      end
+      cli --> dockerd
+      dockerd --> containerd
+      containerd --> runc
+      runc --> container1
+      runc --> container2
+      runc --> container3
+      dockerd --> image1
+      dockerd --> image2
+      dockerd --> image3
+  ```
+
 ## Containers
 
 ### What Are Containers?
