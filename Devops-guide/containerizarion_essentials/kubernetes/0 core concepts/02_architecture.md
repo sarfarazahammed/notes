@@ -37,8 +37,8 @@ Kubernetes cluster : Control plane + worker machines
   5. API server can also watch resources for any changes
   6. Each components independently watches the  `apiserver` to know what to do
 - apiserver has builtin `apiserver-proxy`, primarily used to enable access to ClusterIP service from outside cluster
-```sh
-    kubectl proxy --port=8080
+```bash
+  kubectl proxy --port=8080
 ```
 
 #### etcd
@@ -73,7 +73,6 @@ sequenceDiagram
         participant klet as kubelet
         participant cr as container-runtime
     end
-
       user ->> api-server: 1. Create pod request
       api-server ->> etcd: 2. update pod state
       api-server ->> user: 3. acknowledge the request
@@ -88,7 +87,6 @@ sequenceDiagram
       api-server ->> etcd: 10. save new state (node details & ContainersReady)
       klet ->> api-server: 11. all init container are completed
       api-server ->> etcd: 12. save new state (Initialized)
-
       klet ->> api-server: 13. readiness health check is success
       api-server ->> etcd: 12. save new state (Ready)
     ```
