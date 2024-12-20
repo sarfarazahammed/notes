@@ -5,13 +5,14 @@ Kubernetes is an open source orchestrator for deploying containerized applicatio
 - developed by Google
 - introduced in 2014
 - proven infrastructure for distributed systems of all scales
+- now maintained by Cloud Native Computing Foundation (CNCF)
 
 ## Development velocity
 
 - velocity is not defined in terms of simply raw speed
 - It is rather the number of features that can be shipped maintaining the availability of the software
 - Core concepts of kubernetes that help in this area are:
-  
+
   - **Immutability**
     - It means once an artifact is created in the system, it does not change via user modifications
     - With a mutable system, the current state of the infrastructure is not represented as a single artifact, but rather as an accumulation of incremental updates and changes over time
@@ -23,13 +24,13 @@ Kubernetes is an open source orchestrator for deploying containerized applicatio
     - *Declarative configuration* is a way to describe the desired state of the system, rather than the steps to get there (which is called as *imperative configuration*)
     - With an imperative approach, the configuration would say “run A, run B, and run C.” The corresponding declarative configuration would be “replicas equals three
     - The idea of storing declarative configuration in source control is often referred to as `infrastructure as code`
-  
+
   - **Self-healing**
     - K8s is an online, self-healing system
     - After receiving a declarative configuration, K8s will continuously work to ensure that the actual state of the system matches the desired state
     - K8s will not only initialize the system, but also continuously monitor it, and if it detects any divergence from the desired state, it will automatically correct it
     - > Online self-healing systems improve developer velocity because the time and energy you might otherwise have spent on operations and maintenance can instead be spent on developing and testing new features.
-  
+
   - **Shared reusable libraries and tools**
 
 ## Scaling (of both software and teams)
