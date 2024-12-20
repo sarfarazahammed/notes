@@ -229,16 +229,16 @@ graph TD
 
 Docker builds containers using 10 major system features.They are as follows
 
-PID namespace — Process identifiers and capabilities
-UTS namespace — Host and domain name
-MNT namespace — Filesystem access and structure
-IPC namespace — Process communication over shared memory
-NET namespace — Network access and structure
-USR namespace — User names and identifiers
-chroot syscall —Controls the location of the filesystem root
-cgroups — Resource protection
-CAP drop — Operating system feature restrictions
-Security modules — Mandatory access controls
+- PID namespace — Process identifiers and capabilities
+- UTS namespace — Host and domain name
+- MNT namespace — Filesystem access and structure
+- IPC namespace — Process communication over shared memory
+- NET namespace — Network access and structure
+- USR namespace — User names and identifiers
+- chroot syscall —Controls the location of the filesystem root
+- cgroups — Resource protection
+- CAP drop — Operating system feature restrictions
+- Security modules — Mandatory access controls
 
 ## Shipping Containers
 
