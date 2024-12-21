@@ -59,7 +59,7 @@ Kubernetes cluster : Control plane + worker machines
 - Responsible for scheduling pods on worker nodes
 - Scheduler takes the specification(resource info, priorities, taints, ..) of the pod and selects the best node
 for the pod satisfying the requested requirements
-- ```mermaid
+```mermaid
 sequenceDiagram
     box external
         participant user
