@@ -60,36 +60,36 @@ Kubernetes cluster : Control plane + worker machines
 - Scheduler takes the specification(resource info, priorities, taints, ..) of the pod and selects the best node
 for the pod satisfying the requested requirements
 ```mermaid
-sequenceDiagram
-    box external
-        participant user
-    end
-    box controlPlane
-      participant sched as kube-scheduler
-      participant api-server
-      participant etcd
-    end
-    box workerNode
-        participant klet as kubelet
-        participant cr as container-runtime
-    end
-      user ->> api-server: 1. Create pod request
-      api-server ->> etcd: 2. update pod state
-      api-server ->> user: 3. acknowledge the request
-      sched ->> api-server: 4. identifies an unscheduled pod<br/>creates a pod-node binding
-      api-server ->> etcd: 5. save new state<br/>(PodScheduled)
-      klet ->> api-server: 6. watch for bound pod
-      klet ->> api-server: 7. gets pod specification
-      klet ->> api-server: 8. ready to start pod
-      api-server ->> etcd: 9. save new state<br/>(PodReadyToStartContainers)
-      klet ->> cr: 8. run the pod's containers
-      klet ->> api-server: 9. assign pod to node
-      api-server ->> etcd: 10. save new state (node details & ContainersReady)
-      klet ->> api-server: 11. all init container are completed
-      api-server ->> etcd: 12. save new state (Initialized)
-      klet ->> api-server: 13. readiness health check is success
-      api-server ->> etcd: 12. save new state (Ready)
-    ```
+   sequenceDiagram
+      box external
+          participant user
+      end
+      box controlPlane
+        participant sched as kube-scheduler
+        participant api-server
+        participant etcd
+      end
+      box workerNode
+          participant klet as kubelet
+          participant cr as container-runtime
+      end
+        user ->> api-server: 1. Create pod request
+        api-server ->> etcd: 2. update pod state
+        api-server ->> user: 3. acknowledge the request
+        sched ->> api-server: 4. identifies an unscheduled pod<br/>creates a pod-node binding
+        api-server ->> etcd: 5. save new state<br/>(PodScheduled)
+        klet ->> api-server: 6. watch for bound pod
+        klet ->> api-server: 7. gets pod specification
+        klet ->> api-server: 8. ready to start pod
+        api-server ->> etcd: 9. save new state<br/>(PodReadyToStartContainers)
+        klet ->> cr: 8. run the pod's containers
+        klet ->> api-server: 9. assign pod to node
+        api-server ->> etcd: 10. save new state (node details & ContainersReady)
+        klet ->> api-server: 11. all init container are completed
+        api-server ->> etcd: 12. save new state (Initialized)
+        klet ->> api-server: 13. readiness health check is success
+        api-server ->> etcd: 12. save new state (Ready)
+```
 #### kube controller manager
 - Responsibility of kube controller manager is to manage all the controllers and the controllers try to keep the cluster in the desired state
 - In k8s, controllers are control loops that watch the state of k8s object, then make or request changes needed
