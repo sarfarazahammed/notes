@@ -1,6 +1,4 @@
-Here's a set of notes based on the provided content, formatted for easy reference:
 
-```markdown
 # Docker Essentials
 
 ## Terminology
